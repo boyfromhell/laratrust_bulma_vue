@@ -41,7 +41,7 @@
 						@else
 						<div class="navbar-item has-dropdown is-hoverable">
 							<a class="navbar-item">
-								Hi {{$user->name}}
+								Hi {{Auth::user()->name}}
 								<span class="icon">
 									<i class="fa fa-caret-down" aria-hidden="true"></i>
 								</span>
