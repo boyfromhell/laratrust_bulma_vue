@@ -9290,7 +9290,7 @@ a.dropdown-item.is-active,
 
 .menu-list a:hover {
   background-color: whitesmoke;
-  color: #363636;
+  color: rgba(10, 199, 111, 0.897);
 }
 
 .menu-list a.is-active {
@@ -17230,5 +17230,30 @@ label.panel-block:hover {
 
 .p-r-100 {
   padding-right: 100px;
+}
+
+.bd-special-shadow {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.1)), to(transparent));
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), transparent);
+  height: 8px;
+  left: 0;
+  opacity: 0;
+  right: 0;
+  top: 100%;
+  opacity: 1;
+  border-bottom: 1px;
+  border-bottom-color: initial;
+  border-bottom-style: ridge;
+  z-index: 100;
+  -webkit-transform-origin: center top;
+  transform-origin: center top;
+}
+
+.side-menu {
+  position: fixed;
+  height: 100vh;
+  width: 200px;
+  background-color: white;
+  overflow-y: scroll;
 }
 
