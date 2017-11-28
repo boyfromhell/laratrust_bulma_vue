@@ -17249,6 +17249,10 @@ label.panel-block:hover {
   transform-origin: center top;
 }
 
+.banner {
+  background-color: whitesmoke;
+}
+
 .side-menu {
   position: absolute;
   top: 2rem;
