@@ -22,4 +22,6 @@ Route::prefix('manage')->middleware('role:superadministrator|administrator|edito
     Route::get('/dashboard', 'ManageController@dashboard')->name('manage.dashboard');
 });
 
+Route::resource('/users', 'UserController');
+
 Route::get('/home', 'HomeController@index')->name('home');

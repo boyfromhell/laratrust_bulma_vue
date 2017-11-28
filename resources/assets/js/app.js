@@ -18,8 +18,9 @@ Vue.use(Buefy);
  */
 
 // Vue.component('example-component', require('./components/ExampleComponent.vue'));
-var app= new Vue({
-    el:'#app',
-    data:{}
-})
-
+// var app= new Vue({
+//     el:'#app',
+//     data:{
+//         auto_password:true
+//     }
+// });
