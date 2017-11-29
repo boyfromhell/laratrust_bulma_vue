@@ -7,7 +7,7 @@
 		</div>
 		<div class="column">
 			<a href="{{route('permissions.create')}}" class="button is-primary  is-pulled-right">
-				<i class="fa fa-user-plus"></i>&nbsp; Create New Permission</a>
+				<i class="fa fa-key"></i>&nbsp; Create New Permission</a>
 		</div>
 	</div>
 	<hr>
