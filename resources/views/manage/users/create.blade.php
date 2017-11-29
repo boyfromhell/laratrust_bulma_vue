@@ -1,5 +1,4 @@
-@extends('layouts.manage') 
-@section('content')
+@extends('layouts.manage') @section('content')
 <div class="flex-container">
 	<div class="columns m-t-10">
 		<div class="column">
@@ -7,43 +6,62 @@
 		</div>
 	</div>
 	<hr class="m-t-0">
-	<div class="columns">
-		<div class="column">
-			<form action="{{route('users.store')}}" method="POST">
-				{{csrf_field()}}
+	<form action="{{route('users.store')}}" method="POST">
+		{{csrf_field()}}
+		<div class="columns">
+			<div class="column">
 				<div class="field">
-					<label for="name" class="label"><i class="fa fa-user"></i> Name</label>
+					<label for="name" class="label">Name</label>
 					<p class="control">
 						<input type="text" class="input" name="name" id="name">
 					</p>
 				</div>
 				<div class="field">
-                
-					<label for="email" class="label"><i class="fa fa-envelope"></i> Email</label>
+					<label for="email" class="label">Email:</label>
 					<p class="control">
 						<input type="text" class="input" name="email" id="email">
 					</p>
 				</div>
 				<div class="field">
-					<label for="password" class="label"><i class="fa fa-lock"></i> Password</label>
+					<label for="password" class="label">
+						<i class="fa fa-lock"></i> Password</label>
 					<p class="control">
 						<input type="passsword" class="input" password="password" id="password" :disabled="auto_password" placeholder="Manually enter a password.">
 						<b-checkbox name="auto_generate" class="m-t-15" :checked="true" v-model="auto_password">Auto Generate Password</b-checkbox>
 					</p>
 				</div>
-                <button class="button is-success">Create User</button>
-			</form>
+			</div>
+			<!-- end of .column -->
+			<div class="column">
+				<label for="roles" class="label">Roles:</label>
+				<input type="hidden" name="roles" :value="rolesSelected" /> {{--
+				<b-checkbox-group v-model="rolesSelected"> --}} @foreach ($roles as $role)
+					<div class="field">
+						<b-checkbox name="rolesSelected" v-model="rolesSelected" :native-value="{{$role->id}}">{{$role->display_name}}</b-checkbox>
+					</div>
+					@endforeach {{-- </b-checkbox-group> --}}
+			</div>
 		</div>
-	</div>
+		<!-- end of .columns for forms -->
+		<div class="columns">
+			<div class="column">
+				<hr />
+				<button class="button is-primary is-pulled-right">
+					<i class="fa fa-user-plus m-r-10"></i>Create New User</button>
+			</div>
+		</div>
+	</form>
 </div>
-@endsection
-@section('scripts')
+<!-- end of .flex-container -->
+@endsection @section('scripts')
 <script>
-    var app= new Vue({
-        el:'#app',
-        data:{
-            auto_password:true
-        }
+	var app = new Vue({
+      el: '#app',
+      data: {
+        auto_password: true,
+        rolesSelected: {!! old('roles') ? old('roles') : '[]' !!}
+      }
     });
+
 </script>
 @endsection

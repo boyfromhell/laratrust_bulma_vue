@@ -32,6 +32,7 @@
 						<td>{{$user->email}}</td>
 						<td>{{$user->created_at->toFormattedDateString()}}</td>
 						<td>
+							<a href="{{route('users.show', $user->id)}}" class="button is-outlined">View</a>
 							<a href="{{route('users.edit', $user->id)}}" class="button is-outlined">Edit</a>
                             {{--  <a href="{{route('users.destroy', $user->id)}}" class="button is-outlined" onclick="event.preventDefault();
                          document.getElementById('delete-form').submit();">Delete</a>  --}}

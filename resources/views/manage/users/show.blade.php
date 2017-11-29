@@ -6,7 +6,7 @@
 			<h1 class="title">View User Details</h1>
 		</div>
         <div class="column">
-        <a href="{{route('users.edit', $user->id)}}" class="button is-primary is-pulled-right"><i class="fa fa-user m-r-10"> Edit User</i></a>
+        <a href="{{route('users.edit', $user->id)}}" class="button is-primary is-pulled-right"><i class="fa fa-edit m-r-10"> Edit User</i></a>
         </div>
 	</div>
 	<hr class="m-t-0">
@@ -19,6 +19,15 @@
             <div class="field">
 				<label for="email" class="label">Email</label>
 				<pre>{{$user->email}}</pre>
+			</div>
+			<div class="field">
+				<label for="roles" class="label">Roles</label>
+				{{$user->roles->count()==0 ? 'This user has not been assigned to any roles yet.': ''}}
+				<ul>
+				@foreach($user->roles as $role)
+				<li>{{$role->display_name}} ({{$role->description}})</li>
+				@endforeach
+				</ul>
 			</div>
 		</div>
 	</div>
