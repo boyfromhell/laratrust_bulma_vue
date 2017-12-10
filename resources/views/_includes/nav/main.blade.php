@@ -1,11 +1,20 @@
 <nav class="navbar bd-special-shadow" role="navigation" aria-label="main navigation">
-	{{--  <div id="" class="bd-special-shadow"></div>  --}}
+	{{--
+	<div id="" class="bd-special-shadow"></div> --}}
 	<div class="container">
 		<div class="navbar-brand">
 			<!-- navbar items, navbar burger... -->
 			<a class="navbar-item" href="{{route('home')}}">
 				<img src="https://bulma.io/images/bulma-logo.png" width="112" height="28" alt="Bulma">
 			</a>
+			@if (Request::segment(1)=="manage")
+			<a class="navbar-item" id="admin-slideout-button"><span class="icon"><i class="fa fa-arrow-circle-o-right"></i></span></a>
+			@endif
+			<button class="button navbar-burger">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
 		</div>
 		<div class="navbar-menu">
 			<div class="navbar-start">

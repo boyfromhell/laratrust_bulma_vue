@@ -7,6 +7,8 @@
 
 require('./bootstrap');
 
+
+
 window.Vue = require('vue');
 import Buefy from 'buefy';
 Vue.use(Buefy);
@@ -24,3 +26,4 @@ Vue.use(Buefy);
 //         auto_password:true
 //     }
 // });
+require('./manage');
