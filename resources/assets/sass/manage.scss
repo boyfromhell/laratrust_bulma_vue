@@ -29,6 +29,62 @@
         transform: rotateY(180deg);
     }
 }
+.widget-area{
+    min-height: 75px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(10, 10, 10, 0.1);
+
+    &.author-widget{
+        .selected-author{
+            display: flex;
+            align-items: flex-start;
+            img{
+                border-radius: 25px;  
+            }
+            .author{
+                margin: auto 0 auto 10px;
+                .subtitle{
+                    font-weight: 300;
+                    font-size: .8em;
+                }
+            }
+        }
+    }
+
+    &.post-status-widget{
+        .status{
+            display: flex;
+            align-content: flex-start;
+            .status-icon{
+                min-width: 50px;
+                i{
+                    text-align: center;
+                }
+            }
+            .status-details{
+                margin-left: 10px;
+            }
+            h4{
+                font-weight: 800;
+            }
+            p{
+                font-weight: 300;
+                font-size: .8em;
+            }
+        }
+    }
+
+    &.publish-buttons-widget{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .primary-action-button, .secondary-action-button{
+            flex: 1;
+            margin: 0 5px;
+        }
+    }
+}
 .management-area{
     position: absolute;
     top:4rem;
@@ -39,11 +95,13 @@
 .flex-container{
     margin: 10px 25px;
 }
+
 .submenu{
     max-height:0;
     overflow:hidden;
     transition: all 0.3s ease-in-out;
 }
+
 .menu-list li ul{
     margin-top:0;
     margin-bottom: 0;
