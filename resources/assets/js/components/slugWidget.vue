@@ -59,16 +59,14 @@
       },
       data: function() {
         return {
-          slug: this.convertTitle(),
+          slug: this.setSlug(this.title),
           isEditing: false,
           customSlug: '',
-          wasEdited: false
+          wasEdited: false,
+          api_token:this.$root.api_token
         }
       },
       methods: {
-        convertTitle: function() {
-          return Slug(this.title)
-        },
         editSlug: function() {
           this.customSlug = this.slug;
           this.$emit('edit', this.slug);
@@ -77,26 +75,51 @@
         saveSlug: function() {
           // run ajax to see if new slug is unique
           if (this.customSlug !== this.slug) this.wasEdited = true;
-          this.slug = Slug(this.customSlug);
+          this.setSlug(this.customSlug)
           this.$emit('save', this.slug);
           this.isEditing = false;
         },
         resetEditing: function() {
-          this.slug = this.convertTitle();
+          this.setSlug = this.title;
           this.$emit('reset', this.slug);
           this.wasEdited = false;
           this.isEditing = false;
+        },
+        setSlug: function(newVal, count=0){
+          //slugify newval
+          var slug = Slug(newVal + (count > 0 ? '-' + count : ''));
+          let vm=this; //vue module for axios
+          // this.slug="test";
+          
+          if(this.api_token && slug){
+            this.slug=slug;
+            //test to see it unique
+          axios.get('/laratrust_bulma_vue/public/api/posts/unique', {
+            params:{
+              api_token:vm.api_token ,
+              slug:slug
+            }
+          }).then(function(responce){
+            //if unique set slug and emit event
+            if(responce.data){
+              vm.slug=slug;
+              vm.$emit('slug-changed', slug)
+            }else{
+              //if not, customize the slug to make it unique and test again
+              vm.setSlug(newVal, count+1)
+            }
+          }).catch(function(error){
+            console.log(error);
+          })
+          
         }
+          }
+          
       },
       watch: {
         title: _.debounce(function() {
-            if (this.wasEdited == false) this.slug = this.convertTitle()
-            // run ajax to see if slug is unique
-            // if not unique, customize the slug to make it unique
-          }, 250),
-        slug: function(val) {
-          this.$emit('slug-changed', this.slug)
-        }
+            if (this.wasEdited == false) this.setSlug (this.title);
+          }, 500),
       }
     }
 </script>

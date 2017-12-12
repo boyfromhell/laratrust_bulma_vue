@@ -58,6 +58,7 @@ class UserController extends Controller
       $user->name = $request->name;
       $user->email = $request->email;
       $user->password = Hash::make($password);
+      //api_token will generate with observers
       $user->save();
       if ($request->roles) {
         $user->syncRoles(explode(',', $request->roles));

@@ -20,7 +20,8 @@ Vue.use(Buefy);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('slugWidget', require('./components/slugWidget.vue'));
+// Vue.component('slugWidget', require('./components/slugWidget.vue'));
+Vue.component('slug-widget', require('./components/slugWidget.vue'));
 // var app= new Vue({
 //     el:'#app',
 //     data:{
